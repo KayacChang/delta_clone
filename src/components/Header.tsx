@@ -3,6 +3,7 @@ import { HiMenu as Menu } from "react-icons/hi";
 import { FaRegBell as Notify } from "react-icons/fa";
 import Widget from "./Widget";
 import Banner from "./Banner";
+import Shopping from "./Shopping";
 import styles from "./Header.module.scss";
 
 function Nav() {
@@ -28,6 +29,7 @@ export default function Header() {
       <Nav />
       <Widget />
       <Banner />
+      <Shopping />
     </header>
   );
 }

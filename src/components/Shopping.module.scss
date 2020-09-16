@@ -1,0 +1,27 @@
+@import "styles/variable";
+
+.shopping {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  flex: 1;
+  min-width: 19%;
+
+  padding: 12px 0;
+  border: 1px solid $border;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    margin: 4px 0;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
