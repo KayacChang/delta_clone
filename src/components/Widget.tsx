@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Book from "./Book";
 import { MdExpandMore as ExpandMore } from "react-icons/md";
 import styles from "./Widget.module.scss";
@@ -36,6 +36,12 @@ const variants = {
 
 export default function Widget() {
   const [isExpand, setExpand] = useState(false);
+
+  useEffect(() => {
+    Object.assign(window.document.body.style, {
+      overflow: isExpand ? "hidden" : "auto",
+    });
+  }, [isExpand]);
 
   return (
     <motion.div
