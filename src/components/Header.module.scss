@@ -1,0 +1,35 @@
+@import "styles/variable";
+
+.header {
+  background: $dark;
+  color: $white;
+
+  padding: 0.71875rem 0;
+
+  display: flex;
+}
+
+.menu {
+  margin: 0 30px;
+}
+
+.sign_group {
+  display: flex;
+  margin: auto;
+
+  a {
+    color: $white;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    padding: 4px 12px;
+  }
+}
+.login {
+  background: $red;
+}
+
+.notify {
+  margin: 0 30px;
+}
