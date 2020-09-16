@@ -3,17 +3,19 @@ import styles from "./Book.module.scss";
 
 function Switch() {
   return (
-    <button className={styles.switch}>
-      <span>{"\u2194"}</span>
-    </button>
+    <div>
+      <button className={styles.switch}>
+        <span>{"\u2194"}</span>
+      </button>
+    </div>
   );
 }
 
-type Props = {
+type LocationProps = {
   from: string;
   hint: string;
 };
-function Location({ from, hint }: Props) {
+function Location({ from, hint }: LocationProps) {
   return (
     <div className={styles.location}>
       <button>
@@ -23,6 +25,7 @@ function Location({ from, hint }: Props) {
     </div>
   );
 }
+
 export default function Book() {
   return (
     <div className={styles.book}>
