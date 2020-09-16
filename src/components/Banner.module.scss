@@ -1,0 +1,30 @@
+.banner {
+  white-space: pre-line;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 6rem 0;
+
+    background: rgba($color: #000000, $alpha: 0.3);
+  }
+}
+
+.title a {
+  font-size: 2rem !important;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.content a {
+  margin: 0 1rem;
+  font-size: 0.75rem !important;
+  font-weight: 800;
+  text-align: center;
+}
