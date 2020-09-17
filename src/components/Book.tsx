@@ -1,6 +1,7 @@
 import { Moment } from "moment";
 import { range } from "ramda";
 import React, { useState } from "react";
+import Advanced from "./Advanced";
 import styles from "./Book.module.scss";
 import Calendar from "./Calendar";
 import CheckBox from "./CheckBox";
@@ -80,6 +81,8 @@ export default function Book() {
             <CheckBox name={name} label={label} />
           ))}
         </div>
+
+        <Advanced />
       </form>
     </div>
   );

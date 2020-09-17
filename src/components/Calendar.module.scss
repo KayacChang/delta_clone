@@ -1,7 +1,9 @@
 @import "styles/variable";
 
 .wrapper {
-  border-bottom: 1px solid $gray;
+  > button {
+    border-bottom: 1px solid $gray !important;
+  }
 }
 
 .trigger {

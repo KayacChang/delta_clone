@@ -1,0 +1,15 @@
+.advanced {
+}
+
+.advanced_trigger {
+  display: flex;
+  align-items: center;
+
+  font-weight: 600;
+  font-size: small !important;
+
+  span {
+    padding: 0 1rem;
+    font-size: 6px;
+  }
+}

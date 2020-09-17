@@ -16,19 +16,6 @@ function Tabs() {
   );
 }
 
-type Props = {
-  onClick: () => void;
-};
-function Expand({ onClick }: Props) {
-  return (
-    <div className={styles.expand}>
-      <button onClick={onClick}>
-        <ExpandMore size={32} />
-      </button>
-    </div>
-  );
-}
-
 const variants = {
   open: { height: 100 + "vh" },
   closed: { height: "auto" },
@@ -53,10 +40,16 @@ export default function Widget() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={styles.widget}
     >
-      <div className={styles.top}>
-        <Tabs />
-        <Book />
-        <Expand onClick={() => setExpand((state) => !state)} />
+      <Tabs />
+      <Book />
+
+      <div
+        className={styles.expand}
+        style={{ position: isExpand ? "fixed" : "absolute" }}
+      >
+        <button onClick={() => setExpand((state) => !state)}>
+          <ExpandMore size={32} />
+        </button>
       </div>
     </motion.div>
   );
