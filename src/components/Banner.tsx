@@ -1,4 +1,5 @@
 import React from "react";
+import { url } from "utils";
 import styles from "./Banner.module.scss";
 
 const IMG =
@@ -7,10 +8,6 @@ const IMG =
 const title = `MASKER UP.\n WHEELS UP.`;
 
 const content = `In keeping with best practice guidelines from the CDC, all customers must wear a mask or face covering when traveling.`;
-
-function url(href: string) {
-  return `url(${href})`;
-}
 
 export default function Banner() {
   return (
