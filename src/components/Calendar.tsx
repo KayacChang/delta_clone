@@ -68,6 +68,11 @@ function Calendar({ time, onSelect, range }: CalendarProps) {
   );
 }
 
+const variants = {
+  hidden: { opacity: 0, zIndex: 0 },
+  visible: { opacity: 1 },
+};
+
 type Props = {
   dateRange: Moment[];
   setDateRange: (range: Moment[]) => void;
@@ -83,10 +88,7 @@ export default function CalendarSection({ dateRange, setDateRange }: Props) {
         <span>{!dateRange[1] ? "Return" : dateRange[1].format("MMM DD")}</span>
       </button>
 
-      <div
-        className={styles.page}
-        style={{ visibility: isOpen ? "visible" : "hidden" }}
-      >
+      <div className={clsx(styles.page, isOpen && styles.open)}>
         <div className={styles.top}>
           <div className={styles.control}>
             <div>
