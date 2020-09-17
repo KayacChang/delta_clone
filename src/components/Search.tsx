@@ -16,11 +16,12 @@ function Switch() {
 type LocationProps = {
   from: string;
   hint: string;
+  onClick: () => void;
 };
-function Location({ from, hint }: LocationProps) {
+function Location({ from, hint, onClick }: LocationProps) {
   return (
     <div className={styles.location}>
-      <button>
+      <button onClick={onClick}>
         <span>{from}</span>
         <span>{hint}</span>
       </button>
@@ -34,13 +35,21 @@ export default function Search() {
   return (
     <div>
       <div className={styles.top}>
-        <Location from={"From"} hint={"Your Origin"} />
+        <Location
+          from={"From"}
+          hint={"Your Origin"}
+          onClick={() => setOpen(true)}
+        />
         <Switch />
-        <Location from={"To"} hint={"Your Destination"} />
+        <Location
+          from={"To"}
+          hint={"Your Destination"}
+          onClick={() => setOpen(true)}
+        />
       </div>
 
       <Modal open={isOpen}>
-        <Control onClose={() => setOpen(!isOpen)} />
+        <Control onClose={() => setOpen(false)} />
       </Modal>
     </div>
   );
