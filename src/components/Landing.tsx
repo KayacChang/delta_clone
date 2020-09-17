@@ -3,7 +3,7 @@ import { IoIosArrowForward as Forward } from "react-icons/io";
 import { url } from "utils";
 import styles from "./Landing.module.scss";
 
-const sections = [
+const services = [
   {
     img:
       "//content.delta.com/content/www/en_US/personalization/campaign/homepage/banner-promoquilt/us-carousel.damAssetRender.20200325T1219469810400.html/content/dam/delta-tnt/homepage/covid/icon-flight-changes-1000.jpg",
@@ -24,12 +24,43 @@ const sections = [
   },
 ];
 
+const posts = [
+  {
+    img:
+      "//content.delta.com/content/www/en_US/personalization/campaign/homepage/banner-promoquilt/us-carousel.damAssetRender.20200504T1357339150400.html/content/dam/delta-com/airplanes/airplane-sea-boeing-snow-1400.jpg",
+    title: "ADAPTED TRAVEL EXPERIENCE",
+    description: `Learn how Delta is continuing to evaluate and make adjustments to your travel experience while staying in close coordination with the CDC and WHO to ensure your safety.`,
+  },
+  {
+    img:
+      "//content.delta.com/content/www/en_US/personalization/campaign/homepage/banner-promoquilt/us-carousel.damAssetRender.20200325T1154442160400.html/content/dam/delta-tnt/homepage/covid/delta-aircraft-cleaning-hand-1200.jpg",
+    title: "COMMITTED TO YOUR SAFETY",
+    description: `We're doing everything we can to deliver a safe, healthy and clean travel experience. Caring for our customers and employees is our top priority. `,
+  },
+];
+
+const products = [
+  {
+    img:
+      "//content.delta.com/content/www/en_US/personalization/campaign/homepage/banner-promoquilt/us-carousel.damAssetRender.20200325T1209251220400.html/content/dam/delta-tnt/homepage/covid/fly-delta-app-1500.jpg",
+    title: "DOWNLOAD THE FLY DELTA APP",
+    description: `Download the app to be notified of flight updates and access your mobile boarding pass to limit the use of touch-screen kiosks. `,
+  },
+  {
+    img:
+      "//content.delta.com/content/www/en_US/personalization/campaign/homepage/banner-promoquilt/us-carousel.damAssetRender.20200617T1058385000400.html/content/dam/delta-com/ux-team/screens-shop-book-350.jpg",
+    title: "BOOK WITH CONFIDENCE",
+    description: `We're ready when you are. We are waiving change fees broadly and, above all, rest assured the value of your ticket won't be lost if you need to make a change. `,
+  },
+];
+
 type Props = {
   img: string;
   title: string;
   description: string;
+  hr?: boolean;
 };
-function Item({ img, title, description }: Props) {
+function Card({ img, title, description, hr = false }: Props) {
   return (
     <div className={styles.content}>
       <span
@@ -40,6 +71,9 @@ function Item({ img, title, description }: Props) {
       />
       <div>
         <h4>{title}</h4>
+
+        {hr && <hr />}
+
         <div>
           <p>{description}</p>
           <span>
@@ -59,9 +93,21 @@ export default function Landing() {
         <h1>Supporting You Through Your Travel Journey</h1>
       </section>
 
-      <section className={styles.mid}>
-        {sections.map(({ img, title, description }) => (
-          <Item img={img} title={title} description={description} />
+      <section>
+        {services.map(({ img, title, description }) => (
+          <Card img={img} title={title} description={description} />
+        ))}
+      </section>
+
+      <section>
+        {posts.map(({ img, title, description }) => (
+          <Card img={img} title={title} description={description} />
+        ))}
+      </section>
+
+      <section>
+        {products.map(({ img, title, description }) => (
+          <Card img={img} title={title} description={description} hr={true} />
         ))}
       </section>
     </main>
