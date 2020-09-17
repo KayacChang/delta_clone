@@ -1,0 +1,43 @@
+@import "styles/variable";
+
+.select {
+  button {
+    padding: 1rem 0;
+    border-bottom: 1px solid $gray !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: medium;
+    outline: none;
+
+    svg {
+      color: $red;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background: $white;
+
+    overflow: hidden;
+    border-radius: 8px;
+
+    button {
+      color: $dark;
+      border: 0 !important;
+
+      &:hover {
+        color: $white;
+        background: $indigo;
+      }
+    }
+  }
+}
+
+.active {
+  color: $white !important;
+  background: $blue !important;
+}

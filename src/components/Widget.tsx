@@ -35,7 +35,7 @@ const variants = {
 };
 
 export default function Widget() {
-  const [isExpand, setExpand] = useState(false);
+  const [isExpand, setExpand] = useState(true);
 
   useEffect(() => {
     Object.assign(window.document.body.style, {
