@@ -1,0 +1,21 @@
+@import "styles/variable";
+
+.feedback {
+  padding: 8px 6px;
+  display: flex;
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  background: rgb(0, 51, 102);
+  color: $white;
+
+  position: fixed;
+  transform: translate(50%, -50%) rotate(90deg);
+  bottom: 1.5rem;
+  right: 1.5rem;
+
+  box-shadow: 0 0 0.9em 0 rgba(0, 0, 0, 0.4);
+  span {
+    margin: 0 4px;
+  }
+}
