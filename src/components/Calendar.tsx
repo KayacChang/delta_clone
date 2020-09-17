@@ -3,6 +3,8 @@ import moment, { Moment } from "moment";
 import styles from "./Calendar.module.scss";
 import { range } from "ramda";
 import clsx from "clsx";
+import Control from "./Control";
+import Modal from "./Modal";
 
 type CalendarProps = {
   range: [Moment, Moment];
@@ -88,14 +90,12 @@ export default function CalendarSection({ dateRange, setDateRange }: Props) {
         <span>{!dateRange[1] ? "Return" : dateRange[1].format("MMM DD")}</span>
       </button>
 
-      <div className={clsx(styles.page, isOpen && styles.open)}>
+      <Modal className={styles.page} open={isOpen}>
         <div className={styles.top}>
-          <div className={styles.control}>
-            <div>
-              <button onClick={() => setDateRange([])}>Clear</button>
-              <button onClick={() => setOpen(false)}>Close</button>
-            </div>
-          </div>
+          <Control
+            onClear={() => setDateRange([])}
+            onClose={() => setOpen(false)}
+          />
 
           <div className={styles.week}>
             <ul>
@@ -136,7 +136,7 @@ export default function CalendarSection({ dateRange, setDateRange }: Props) {
         <div className={styles.bottom}>
           <button onClick={() => setOpen(false)}>Done</button>
         </div>
-      </div>
+      </Modal>
     </div>
   );
 }

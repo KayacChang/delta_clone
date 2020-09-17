@@ -1,0 +1,17 @@
+@import "styles/variable";
+
+.control {
+  background: $dark;
+
+  > div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  button {
+    padding: 1rem;
+    font-size: small;
+    font-weight: 600;
+  }
+}

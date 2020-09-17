@@ -20,27 +20,6 @@
 }
 
 .page {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: $white;
-  color: $secondary-cta;
-  width: 100%;
-  height: 100%;
-
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  > div {
-    width: 100%;
-  }
-
   ul {
     padding: 0.6rem 0;
     margin: 0;
@@ -89,21 +68,6 @@
   padding: 0 2rem;
 }
 
-.control {
-  background: $dark;
-
-  > div {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  button {
-    padding: 1rem;
-    font-size: small;
-    font-weight: 600;
-  }
-}
-
 .content {
   padding: 5rem 0;
   top: 6rem;
@@ -137,11 +101,6 @@
       }
     }
   }
-}
-
-.open {
-  visibility: visible;
-  opacity: 1;
 }
 
 .unavailable {
