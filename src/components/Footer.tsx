@@ -41,7 +41,7 @@ function CopyRight() {
       <p>
         Terms and conditions apply to all offers and SkyMiles benefits. See
         specific offer for details, and visit{" "}
-        <a>{"SkyMiles Membership Guide & Program Rules"}</a>
+        <a href="/">{"SkyMiles Membership Guide & Program Rules"}</a>
       </p>
     </div>
   );
@@ -95,7 +95,7 @@ export default function Footer() {
 
       <div className={styles.sections}>
         {sections.map(({ title }) => (
-          <Collapse title={title} />
+          <Collapse key={title} title={title} />
         ))}
       </div>
 

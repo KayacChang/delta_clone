@@ -34,7 +34,7 @@ export default function Shopping() {
   return (
     <div className={styles.shopping}>
       {items.map(({ name, icon }) => (
-        <Item name={name} icon={icon} />
+        <Item key={name} name={name} icon={icon} />
       ))}
     </div>
   );

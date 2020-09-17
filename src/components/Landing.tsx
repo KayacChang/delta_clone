@@ -95,19 +95,25 @@ export default function Landing() {
 
       <section>
         {services.map(({ img, title, description }) => (
-          <Card img={img} title={title} description={description} />
+          <Card key={title} img={img} title={title} description={description} />
         ))}
       </section>
 
       <section>
         {posts.map(({ img, title, description }) => (
-          <Card img={img} title={title} description={description} />
+          <Card key={title} img={img} title={title} description={description} />
         ))}
       </section>
 
       <section>
         {products.map(({ img, title, description }) => (
-          <Card img={img} title={title} description={description} hr={true} />
+          <Card
+            key={title}
+            img={img}
+            title={title}
+            description={description}
+            hr={true}
+          />
         ))}
       </section>
     </main>

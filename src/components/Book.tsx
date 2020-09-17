@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { MdExpandMore as ExpandIcon } from "react-icons/md";
+import React, { useState } from "react";
 import styles from "./Book.module.scss";
+import Calendar from "./Calendar";
 import Select from "./Select";
 
 function Switch() {
@@ -47,6 +46,8 @@ export default function Book() {
           options={tripTypes}
           onSelect={(id) => setTrip(id)}
         />
+
+        <Calendar />
       </form>
     </div>
   );
