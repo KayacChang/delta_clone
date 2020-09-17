@@ -89,7 +89,7 @@ export default function Book() {
 
         <div className={styles.checkboxs}>
           {checks.map(({ name, label }) => (
-            <CheckBox name={name} label={label} />
+            <CheckBox key={name} name={name} label={label} />
           ))}
         </div>
 
