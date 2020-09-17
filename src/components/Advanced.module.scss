@@ -1,4 +1,13 @@
+@import "styles/variable";
+
 .advanced {
+  a {
+    margin: 1rem 0;
+
+    padding: 0 !important;
+    font-weight: 500 !important;
+    font-size: x-small !important;
+  }
 }
 
 .advanced_trigger {

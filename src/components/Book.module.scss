@@ -62,3 +62,16 @@
     min-width: 45%;
   }
 }
+
+.submit {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    $size: 3rem;
+    width: $size;
+    height: $size;
+    background: $red !important;
+    border-radius: 100%;
+  }
+}

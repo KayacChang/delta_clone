@@ -6,6 +6,7 @@ import styles from "./Book.module.scss";
 import Calendar from "./Calendar";
 import CheckBox from "./CheckBox";
 import Select from "./Select";
+import { BsArrowRightShort as Arrow } from "react-icons/bs";
 
 function Switch() {
   return (
@@ -27,6 +28,16 @@ function Location({ from, hint }: LocationProps) {
       <button>
         <span>{from}</span>
         <span>{hint}</span>
+      </button>
+    </div>
+  );
+}
+
+function Submit() {
+  return (
+    <div className={styles.submit}>
+      <button>
+        <Arrow size={36} />
       </button>
     </div>
   );
@@ -83,6 +94,8 @@ export default function Book() {
         </div>
 
         <Advanced />
+
+        <Submit />
       </form>
     </div>
   );

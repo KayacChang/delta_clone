@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Advanced.module.scss";
 import CheckBox from "./CheckBox";
 import Select from "./Select";
+import TextField from "./TextField";
 
 const economyTypes = [
   "Basic Economy",
@@ -11,14 +12,20 @@ const economyTypes = [
   "Delta Premium Select",
   "Delta One®",
 ];
+
 export default function Advanced() {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <div className={styles.advanced}>
-      <button className={styles.advanced_trigger}>
-        Advanced Search <span>{"\u25BC"}</span>
+      <button
+        className={styles.advanced_trigger}
+        onClick={() => setOpen(!isOpen)}
+      >
+        Advanced Search <span>{isOpen ? "\u25B2" : "\u25BC"}</span>
       </button>
 
-      <div>
+      <div style={{ display: isOpen ? "block" : "none" }}>
         <div>
           <h5>SHOW FARES</h5>
 
@@ -30,9 +37,14 @@ export default function Advanced() {
 
         <div>
           <h5>Best Fares For</h5>
-
           <Select options={economyTypes} />
+
+          <TextField name="meeting" label="Meeting Code (Optional)" />
         </div>
+
+        <a href="/">
+          Use Certificates, eCredits, or Delta Gift Cards <span>{">"}</span>
+        </a>
       </div>
     </div>
   );

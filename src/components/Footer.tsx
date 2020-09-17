@@ -7,16 +7,15 @@ import {
 } from "react-icons/ti";
 import { AiOutlineGlobal as Global } from "react-icons/ai";
 import styles from "./Footer.module.scss";
+import TextField from "./TextField";
 
 function Search() {
   return (
-    <div className={styles.search}>
-      <input type="text" name="search" id="search" />
-      <label htmlFor="search">Search for a topic...</label>
-      <button>
-        <SearchIcon size={24} />
-      </button>
-    </div>
+    <TextField
+      name="search"
+      label="Search for a topic..."
+      icon={<SearchIcon size={24} />}
+    />
   );
 }
 

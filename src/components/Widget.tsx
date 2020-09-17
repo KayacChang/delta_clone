@@ -18,7 +18,7 @@ function Tabs() {
 
 const variants = {
   open: { height: 100 + "vh" },
-  closed: { height: "auto" },
+  closed: { height: 25 + "vh" },
 };
 
 export default function Widget() {
