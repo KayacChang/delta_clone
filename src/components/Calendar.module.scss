@@ -18,7 +18,7 @@
 }
 
 .page {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
@@ -27,8 +27,6 @@
   width: 100%;
   height: 100%;
 
-  overflow: scroll;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,20 +34,50 @@
   > div {
     width: 100%;
 
-    > * {
-      margin: 0 1rem;
+    > div {
+      padding: 0 1rem;
     }
   }
 
   ul {
     padding: 0.6rem 0;
+    margin: 0;
     list-style-type: none;
     display: flex;
+
+    background: $white;
 
     li {
       flex: 1;
       font-size: small;
     }
+  }
+}
+
+.top {
+  position: fixed;
+  top: 0;
+}
+
+.bottom {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+
+  display: flex;
+  justify-content: flex-end;
+  background: $white;
+
+  button {
+    text-transform: uppercase;
+    color: $white !important;
+    background: $red !important;
+    padding: 1rem 2.4rem;
+
+    margin: 1rem;
+
+    font-size: small;
+    font-weight: bold;
   }
 }
 
@@ -73,7 +101,14 @@
   }
 }
 
+.content {
+  padding: 5rem 0;
+  top: 6rem;
+  overflow: scroll;
+}
+
 .calendar {
+  margin: 0 1rem;
   border-bottom: 1px solid rgb(222, 223, 225);
 
   > div {
@@ -95,8 +130,17 @@
       height: $size;
 
       &:hover {
-        background: rgb(222, 223, 225);
+        background: rgb(222, 223, 225, 0.2);
       }
     }
   }
+}
+
+.unavailable {
+  pointer-events: none;
+  color: $gray !important;
+}
+
+.today {
+  border: 2px solid $dark !important;
 }
