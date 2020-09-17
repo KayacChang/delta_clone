@@ -53,3 +53,12 @@
     font-size: 2.8rem;
   }
 }
+
+.checkboxs {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    min-width: 45%;
+  }
+}

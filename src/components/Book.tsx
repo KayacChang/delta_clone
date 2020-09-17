@@ -1,7 +1,9 @@
 import { Moment } from "moment";
+import { range } from "ramda";
 import React, { useState } from "react";
 import styles from "./Book.module.scss";
 import Calendar from "./Calendar";
+import CheckBox from "./CheckBox";
 import Select from "./Select";
 
 function Switch() {
@@ -30,8 +32,24 @@ function Location({ from, hint }: LocationProps) {
 }
 
 const tripTypes = ["Round Trip", "One Way", "Multi-City"];
+const passengers = range(1, 10).map((num) => `${num} Passenger`);
+const checks = [
+  {
+    name: "Shop with Miles",
+    label: "Shop with Miles",
+  },
+  {
+    name: "Refundable Fares",
+    label: "Refundable Fares",
+  },
+  {
+    name: "My dates are flexible",
+    label: "My dates are flexible",
+  },
+];
 export default function Book() {
   const [trip, setTrip] = useState(0);
+  const [passenger, setPassenger] = useState(0);
   const [dateRange, setDateRange] = useState([] as Moment[]);
 
   return (
@@ -50,6 +68,18 @@ export default function Book() {
         />
 
         <Calendar dateRange={dateRange} setDateRange={setDateRange} />
+
+        <Select
+          current={passenger}
+          options={passengers}
+          onSelect={(id) => setPassenger(id)}
+        />
+
+        <div className={styles.checkboxs}>
+          {checks.map(({ name, label }) => (
+            <CheckBox name={name} label={label} />
+          ))}
+        </div>
       </form>
     </div>
   );

@@ -22,7 +22,11 @@ export default function Select({
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div className={styles.select} onClick={() => setOpen(!isOpen)}>
+    <div
+      className={styles.select}
+      onBlur={() => setOpen(false)}
+      onClick={() => setOpen(!isOpen)}
+    >
       <button>
         {options[current]}
         <ExpandIcon size={32} />
@@ -30,6 +34,7 @@ export default function Select({
 
       <motion.ul
         variants={variants}
+        initial={isOpen ? "open" : "closed"}
         animate={isOpen ? "open" : "closed"}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
