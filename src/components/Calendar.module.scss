@@ -33,10 +33,6 @@
 
   > div {
     width: 100%;
-
-    > div {
-      padding: 0 1rem;
-    }
   }
 
   ul {
@@ -84,6 +80,7 @@
 .week {
   border-bottom: 2px solid rgb(222, 223, 225);
   text-align: center;
+  padding: 0 2rem;
 }
 
 .control {
@@ -108,7 +105,7 @@
 }
 
 .calendar {
-  margin: 0 1rem;
+  margin: 0 2rem;
   border-bottom: 1px solid rgb(222, 223, 225);
 
   > div {
