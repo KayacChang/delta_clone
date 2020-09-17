@@ -1,3 +1,4 @@
+import { Moment } from "moment";
 import React, { useState } from "react";
 import styles from "./Book.module.scss";
 import Calendar from "./Calendar";
@@ -31,6 +32,7 @@ function Location({ from, hint }: LocationProps) {
 const tripTypes = ["Round Trip", "One Way", "Multi-City"];
 export default function Book() {
   const [trip, setTrip] = useState(0);
+  const [dateRange, setDateRange] = useState([] as Moment[]);
 
   return (
     <div className={styles.book}>
@@ -47,7 +49,7 @@ export default function Book() {
           onSelect={(id) => setTrip(id)}
         />
 
-        <Calendar />
+        <Calendar dateRange={dateRange} setDateRange={setDateRange} />
       </form>
     </div>
   );

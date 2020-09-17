@@ -141,3 +141,21 @@
 .today {
   border: 2px solid $dark !important;
 }
+
+.select {
+  color: $white !important;
+  background: $red !important;
+}
+
+.edgeL {
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+}
+.edgeR {
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+}
+.between {
+  background-color: #f5f7fa;
+  background-clip: border-box;
+}
