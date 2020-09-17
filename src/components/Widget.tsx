@@ -38,6 +38,8 @@ export default function Widget() {
   const [isExpand, setExpand] = useState(true);
 
   useEffect(() => {
+    isExpand && window.scrollTo({ top: 0 });
+
     Object.assign(window.document.body.style, {
       overflow: isExpand ? "hidden" : "auto",
     });

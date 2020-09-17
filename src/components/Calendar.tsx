@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment, { Moment } from "moment";
 import styles from "./Calendar.module.scss";
 import { range } from "ramda";
@@ -48,51 +48,48 @@ function Calendar({ time }: Props) {
   );
 }
 
-function CalendarPage() {
-  return (
-    <div className={styles.page}>
-      <div className={styles.top}>
-        <div className={styles.control}>
-          <div>
-            <button>Clear</button>
-            <button>Close</button>
-          </div>
-        </div>
-
-        <div className={styles.week}>
-          <ul>
-            {moment.weekdaysShort().map((day) => (
-              <li key={day}>{day}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className={styles.content}>
-        {range(0, 12).map((val) => (
-          <Calendar time={moment().add(val, "M")} />
-        ))}
-      </div>
-
-      <div className={styles.bottom}>
-        <button>Done</button>
-      </div>
-    </div>
-  );
-}
-
 export default function CalendarSection() {
-  // const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <div className={styles.wrapper}>
-      <button className={styles.trigger}>
+      <button className={styles.trigger} onClick={() => setOpen(true)}>
         <span>Depart</span>
         <span className={styles.separator}>-</span>
         <span>Return</span>
       </button>
 
-      <CalendarPage />
+      <div
+        className={styles.page}
+        style={{ visibility: isOpen ? "visible" : "hidden" }}
+      >
+        <div className={styles.top}>
+          <div className={styles.control}>
+            <div>
+              <button>Clear</button>
+              <button onClick={() => setOpen(false)}>Close</button>
+            </div>
+          </div>
+
+          <div className={styles.week}>
+            <ul>
+              {moment.weekdaysShort().map((day) => (
+                <li key={day}>{day}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className={styles.content}>
+          {range(0, 12).map((val) => (
+            <Calendar time={moment().add(val, "M")} />
+          ))}
+        </div>
+
+        <div className={styles.bottom}>
+          <button>Done</button>
+        </div>
+      </div>
     </div>
   );
 }
