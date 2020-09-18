@@ -7,7 +7,57 @@ import Calendar from "./Calendar";
 import CheckBox from "./common/CheckBox";
 import Select from "./common/Select";
 import Form from "./common/Form";
-import Search from "./Search";
+import SearchModel from "./Search";
+
+function Switch() {
+  return (
+    <div>
+      <button className={styles.switch}>
+        <span>{"\u2194"}</span>
+      </button>
+    </div>
+  );
+}
+
+type LocationProps = {
+  from: string;
+  hint: string;
+  onClick: () => void;
+};
+function Location({ from, hint, onClick }: LocationProps) {
+  return (
+    <div className={styles.location}>
+      <button onClick={onClick}>
+        <span>{from}</span>
+        <span>{hint}</span>
+      </button>
+    </div>
+  );
+}
+
+function Search() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <div className={styles.top}>
+        <Location
+          from={"From"}
+          hint={"Your Origin"}
+          onClick={() => setOpen(true)}
+        />
+        <Switch />
+        <Location
+          from={"To"}
+          hint={"Your Destination"}
+          onClick={() => setOpen(true)}
+        />
+      </div>
+
+      <SearchModel open={open} onClose={() => setOpen(false)} />
+    </div>
+  );
+}
 
 const tripTypes = ["Round Trip", "One Way", "Multi-City"];
 const passengers = range(1, 10).map((num) => `${num} Passenger`);

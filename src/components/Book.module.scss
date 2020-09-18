@@ -12,3 +12,33 @@
     min-width: 45%;
   }
 }
+
+.top {
+  display: flex;
+  justify-content: center;
+}
+
+.switch {
+  margin: auto 16px;
+  padding: 0;
+
+  span {
+    color: $red;
+    font-size: 2.8rem;
+  }
+}
+
+.location {
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  span:nth-child(1) {
+    font-size: 3rem;
+  }
+  span:nth-child(2) {
+    padding: 0.8125rem 0;
+  }
+}
