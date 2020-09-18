@@ -3,13 +3,14 @@ import { FaRegBell as Notify } from "react-icons/fa";
 import Banner from "./Banner";
 import Shopping from "./Shopping";
 import styles from "./Header.module.scss";
-import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { MdExpandMore as ExpandMore } from "react-icons/md";
 import { motion } from "framer-motion";
 import Tabs from "components/common/Tabs";
 import CheckIn from "components/widget/CheckIn";
 import MyTrips from "components/widget/MyTrips";
 import Book from "components/widget/Book";
+import useIsDesktop from "hooks/useIsDesktop";
 
 const LOGO =
   "//content.delta.com/content/www/us/en.damAssetRender.20180509T1731290530400.html/content/dam/delta_homepage_redesign/Logo/Delta%20Logo.svg";
@@ -48,24 +49,6 @@ function Nav({ isDesktop, children }: NavProps) {
       </div>
     </nav>
   );
-}
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-
-    window.addEventListener("resize", updateSize);
-
-    updateSize();
-
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  return size;
 }
 
 type Props = {
@@ -111,9 +94,7 @@ function ExpandView({ children }: Props) {
 
 export default function Header() {
   const [tab, setTab] = useState(0);
-
-  const [width] = useWindowSize();
-  const isDesktop = width > 900;
+  const isDesktop = useIsDesktop();
 
   return (
     <header className={styles.header}>
