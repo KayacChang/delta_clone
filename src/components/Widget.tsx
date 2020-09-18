@@ -14,7 +14,7 @@ const variants = {
 
 export default function Widget() {
   const [isExpand, setExpand] = useState(true);
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(0);
 
   useEffect(() => {
     isExpand && window.scrollTo({ top: 0 });

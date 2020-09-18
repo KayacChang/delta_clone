@@ -19,6 +19,7 @@ export default function Tabs({ active = 0, options = {} }: Props) {
     <div className={styles.tabs}>
       {Object.entries(options).map(([label, func], idx) => (
         <a
+          key={label}
           className={clsx(idx === active && styles.active)}
           href="/"
           onClick={preventDefault(func)}

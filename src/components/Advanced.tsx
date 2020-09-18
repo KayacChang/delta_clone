@@ -13,7 +13,14 @@ const economyTypes = [
   "Delta One®",
 ];
 
-export default function Advanced() {
+type Props = {
+  shopWithMiles?: boolean;
+  myDatesAreFlexible?: boolean;
+};
+export default function Advanced({
+  shopWithMiles = false,
+  myDatesAreFlexible = false,
+}: Props) {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -26,20 +33,24 @@ export default function Advanced() {
       </button>
 
       <div style={{ display: isOpen ? "block" : "none" }}>
-        <div>
-          <h5>SHOW FARES</h5>
+        {(!myDatesAreFlexible || shopWithMiles) && (
+          <div>
+            <h5>SHOW FARES</h5>
 
-          <CheckBox
-            name={"Include Nearby Airports"}
-            label={"Include Nearby Airports"}
-          />
-        </div>
+            <CheckBox
+              name={"Include Nearby Airports"}
+              label={"Include Nearby Airports"}
+            />
+          </div>
+        )}
 
         <div>
           <h5>Best Fares For</h5>
           <Select options={economyTypes} />
 
-          <TextField name="meeting" label="Meeting Code (Optional)" />
+          {!shopWithMiles && (
+            <TextField name="meeting" label="Meeting Code (Optional)" />
+          )}
         </div>
 
         <a href="/">

@@ -61,24 +61,16 @@ function Search() {
 
 const tripTypes = ["Round Trip", "One Way", "Multi-City"];
 const passengers = range(1, 10).map((num) => `${num} Passenger`);
-const checks = [
-  {
-    name: "Shop with Miles",
-    label: "Shop with Miles",
-  },
-  {
-    name: "Refundable Fares",
-    label: "Refundable Fares",
-  },
-  {
-    name: "My dates are flexible",
-    label: "My dates are flexible",
-  },
-];
+const checkList = {
+  "Shop with Miles": false,
+  "Refundable Fares": false,
+  "My dates are flexible": false,
+};
 export default function Book() {
   const [trip, setTrip] = useState(0);
   const [passenger, setPassenger] = useState(0);
   const [dateRange, setDateRange] = useState([] as Moment[]);
+  const [checks, setChecks] = useState(checkList);
 
   return (
     <div className={styles.book}>
@@ -100,12 +92,36 @@ export default function Book() {
         />
 
         <div className={styles.checkboxs}>
-          {checks.map(({ name, label }) => (
-            <CheckBox key={name} name={name} label={label} />
+          {Object.entries(checks).map(([name, checked]) => (
+            <CheckBox
+              key={name}
+              name={name}
+              checked={checked}
+              disable={name !== "Shop with Miles" && checks["Shop with Miles"]}
+              onChange={(checked) => {
+                if (name === "Shop with Miles") {
+                  const checks = checked
+                    ? {
+                        "Shop with Miles": true,
+                        "Refundable Fares": false,
+                        "My dates are flexible": true,
+                      }
+                    : checkList;
+
+                  setChecks(checks);
+                  return;
+                }
+
+                setChecks({ ...checks, [name]: checked });
+              }}
+            />
           ))}
         </div>
 
-        <Advanced />
+        <Advanced
+          shopWithMiles={checks["Shop with Miles"]}
+          myDatesAreFlexible={checks["My dates are flexible"]}
+        />
       </Form>
     </div>
   );
