@@ -62,3 +62,8 @@
     border: 0;
   }
 }
+
+.active {
+  color: $secondary-cta !important;
+  transform: translateY(-120%) scale(0.5) !important;
+}

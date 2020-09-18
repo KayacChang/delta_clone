@@ -5,10 +5,13 @@ import * as serviceWorker from "./serviceWorker";
 
 import "./index.css";
 import "./styles/default.scss";
+import { AirportProvider } from "models/airport";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AirportProvider init={[]}>
+      <App />
+    </AirportProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
