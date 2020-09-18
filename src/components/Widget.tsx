@@ -4,6 +4,7 @@ import { MdExpandMore as ExpandMore } from "react-icons/md";
 import styles from "./Widget.module.scss";
 import { motion } from "framer-motion";
 import Tabs from "./common/Tabs";
+import CheckIn from "./CheckIn";
 
 const variants = {
   open: { height: 100 + "vh" },
@@ -12,6 +13,7 @@ const variants = {
 
 export default function Widget() {
   const [isExpand, setExpand] = useState(true);
+  const [tab, setTab] = useState(0);
 
   useEffect(() => {
     isExpand && window.scrollTo({ top: 0 });
@@ -30,13 +32,14 @@ export default function Widget() {
       className={styles.widget}
     >
       <Tabs
+        active={tab}
         options={{
-          BOOK: () => console.log("book"),
-          "CHECK-IN": () => console.log("check in"),
-          "MY TRIPS": () => console.log("my trips"),
+          BOOK: () => setTab(0),
+          "CHECK-IN": () => setTab(1),
+          "MY TRIPS": () => setTab(2),
         }}
       />
-      <Book />
+      {[<Book />, <CheckIn />][tab]}
 
       <div
         className={styles.expand}

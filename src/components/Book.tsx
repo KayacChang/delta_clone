@@ -6,18 +6,8 @@ import styles from "./Book.module.scss";
 import Calendar from "./Calendar";
 import CheckBox from "./common/CheckBox";
 import Select from "./common/Select";
-import { BsArrowRightShort as Arrow } from "react-icons/bs";
+import Form from "./common/Form";
 import Search from "./Search";
-
-function Submit() {
-  return (
-    <div className={styles.submit}>
-      <button>
-        <Arrow size={36} />
-      </button>
-    </div>
-  );
-}
 
 const tripTypes = ["Round Trip", "One Way", "Multi-City"];
 const passengers = range(1, 10).map((num) => `${num} Passenger`);
@@ -42,9 +32,9 @@ export default function Book() {
 
   return (
     <div className={styles.book}>
-      <Search />
+      <Form>
+        <Search />
 
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
         <Select
           current={trip}
           options={tripTypes}
@@ -66,9 +56,7 @@ export default function Book() {
         </div>
 
         <Advanced />
-
-        <Submit />
-      </form>
+      </Form>
     </div>
   );
 }
