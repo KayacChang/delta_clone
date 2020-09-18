@@ -105,7 +105,7 @@ export default function Landing() {
         ))}
       </section>
 
-      <section>
+      <section className={styles.products}>
         {products.map(({ img, title, description }) => (
           <Card
             key={title}
