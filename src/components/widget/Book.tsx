@@ -189,9 +189,11 @@ export default function Book() {
           myDatesAreFlexible={checks["My dates are flexible"]}
         />
 
-        <a href="/">
-          Use Certificates, eCredits, or Delta Gift Cards <span>{">"}</span>
-        </a>
+        {isOpen && (
+          <a href="/">
+            Use Certificates, eCredits, or Delta Gift Cards <span>{">"}</span>
+          </a>
+        )}
       </Form>
     </div>
   );

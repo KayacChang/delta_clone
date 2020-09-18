@@ -25,27 +25,87 @@
   position: fixed;
   width: 100%;
   z-index: 1;
-
-  display: flex;
-  padding: 0.71875rem 0;
   border-bottom: 0.0625rem solid $border;
-
   background: $dark;
-}
 
-.menu {
-  margin: 0 30px;
+  > div {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    min-height: 3rem;
+
+    > * {
+      margin: auto 0;
+    }
+
+    @include desktop {
+      max-width: 60%;
+
+      > * {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
 }
 
 .sign_group {
-  display: flex;
-  margin: auto;
+  margin: auto !important;
+
+  @include desktop {
+    margin: auto 0 !important;
+  }
 }
 
 .login {
   background: $red;
 }
 
-.notify {
-  margin: 0 30px;
+.widget {
+  background: $dark;
+  position: relative;
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: scroll;
+
+  @include desktop {
+    > div {
+      margin-top: 3rem;
+    }
+  }
+}
+
+.expand {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-height: 30px;
+  overflow: hidden;
+  text-align: center;
+
+  button {
+    display: inline-block;
+    color: $gray !important;
+    padding: 2px 10px 16px 10px;
+    border: 1.9px solid $gray !important;
+    border-radius: 100%;
+  }
+}
+
+.tabs {
+  padding-top: 32px !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+
+  @include desktop {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    display: flex;
+  }
 }
