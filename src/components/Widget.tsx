@@ -3,18 +3,7 @@ import Book from "./Book";
 import { MdExpandMore as ExpandMore } from "react-icons/md";
 import styles from "./Widget.module.scss";
 import { motion } from "framer-motion";
-
-function Tabs() {
-  return (
-    <div className={styles.tabs}>
-      <a className={styles.active} href="/">
-        book
-      </a>
-      <a href="/">check-in</a>
-      <a href="/">my trips</a>
-    </div>
-  );
-}
+import Tabs from "./common/Tabs";
 
 const variants = {
   open: { height: 100 + "vh" },
@@ -40,7 +29,13 @@ export default function Widget() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={styles.widget}
     >
-      <Tabs />
+      <Tabs
+        options={{
+          BOOK: () => console.log("book"),
+          "CHECK-IN": () => console.log("check in"),
+          "MY TRIPS": () => console.log("my trips"),
+        }}
+      />
       <Book />
 
       <div

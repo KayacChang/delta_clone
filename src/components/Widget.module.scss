@@ -10,25 +10,6 @@
   overflow: scroll;
 }
 
-.tabs {
-  padding-top: 32px;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-
-  display: flex;
-  justify-content: center;
-
-  a {
-    margin: 0 16px;
-    padding: 10px 0;
-    font-size: 0.75rem;
-  }
-}
-
-.active {
-  border-bottom: 0.1875rem solid $red;
-}
-
 .expand {
   position: absolute;
   bottom: 0;

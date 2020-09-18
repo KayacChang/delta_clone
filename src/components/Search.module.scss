@@ -29,3 +29,47 @@
     padding: 0.8125rem 0;
   }
 }
+
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.page {
+  background: #fff
+    url("https://content.delta.com/content/dam/delta-applications/fresh-air-core/20.9.0/images/supergraphic-flyout.svg")
+    no-repeat right 2rem top 2.9rem;
+
+  a {
+    font-size: 0.7rem !important;
+    color: $dark !important;
+  }
+
+  section > div {
+    max-width: 90%;
+    margin: auto;
+  }
+}
+
+.tabs {
+  padding-top: 5rem;
+
+  > div {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+
+    justify-content: start;
+
+    a {
+      margin: 0;
+      padding: 0.5rem 2rem;
+    }
+  }
+}
+
+.search {
+  * {
+    color: gray;
+  }
+}

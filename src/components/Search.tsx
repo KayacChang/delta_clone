@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Control from "./common/Control";
 import Modal from "./common/Modal";
+import Tabs from "./common/Tabs";
+import TextField from "./common/TextField";
 import styles from "./Search.module.scss";
+import { GoSearch as SearchIcon } from "react-icons/go";
 
 function Switch() {
   return (
@@ -48,8 +51,31 @@ export default function Search() {
         />
       </div>
 
-      <Modal open={isOpen}>
-        <Control onClose={() => setOpen(false)} />
+      <Modal open={isOpen} className={styles.page}>
+        <div className={styles.fixed}>
+          <Control onClose={() => setOpen(false)} />
+        </div>
+
+        <section>
+          <div className={styles.tabs}>
+            <Tabs
+              options={{
+                SEARCH: () => {},
+              }}
+            />
+          </div>
+
+          <div>
+            <h5>Origin</h5>
+
+            <TextField
+              className={styles.search}
+              name={"origin"}
+              label={"City or Airport"}
+              icon={<SearchIcon size={24} />}
+            />
+          </div>
+        </section>
       </Modal>
     </div>
   );
