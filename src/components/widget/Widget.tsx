@@ -9,7 +9,7 @@ import Book from "./Book";
 
 const variants = {
   open: { height: 100 + "vh" },
-  closed: { height: 25 + "vh" },
+  closed: { height: 30 + "vh" },
 };
 
 export default function Widget() {

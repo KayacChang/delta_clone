@@ -1,12 +1,11 @@
 @import "styles/variable";
 
 .wrapper {
-  > button {
-    border-bottom: 1px solid $gray !important;
-  }
+  border-bottom: 1px solid $gray !important;
 }
 
 .trigger {
+  margin: 0.4rem 0;
   width: 100%;
   display: flex;
   align-items: center;

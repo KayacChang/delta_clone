@@ -1,6 +1,12 @@
 @import "styles/variable";
 
 .select {
+  padding: 1rem 0;
+
+  @include desktop {
+    padding: 0 1rem;
+  }
+
   button {
     padding: 0.5rem 0;
     border-bottom: 1px solid $gray !important;
@@ -24,6 +30,11 @@
 
     overflow: hidden;
     border-radius: 8px;
+
+    @include desktop {
+      position: absolute;
+      z-index: 1;
+    }
 
     button {
       padding: 1rem;

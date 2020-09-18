@@ -21,3 +21,9 @@ $dark: #11172b;
 $secondary-cta: #0b1f66;
 $white: #fff;
 $border: #282f43;
+
+@mixin desktop {
+  @media (min-width: 900px) {
+    @content;
+  }
+}

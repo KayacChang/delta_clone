@@ -18,7 +18,7 @@ type Props = {
 export default function Form({ children }: Props) {
   return (
     <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-      {children}
+      <div className={styles.fields}>{children}</div>
 
       <Submit />
     </form>

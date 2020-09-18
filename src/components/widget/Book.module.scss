@@ -9,13 +9,29 @@
   flex-wrap: wrap;
 
   > * {
-    min-width: 45%;
+    flex: 45%;
+  }
+
+  @include desktop {
+    flex-wrap: nowrap;
   }
 }
 
 .top {
   display: flex;
   justify-content: center;
+
+  margin: 0 1rem;
+}
+.bottom {
+  @include desktop {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 1;
+    }
+  }
 }
 
 .switch {
@@ -40,5 +56,76 @@
   }
   span:nth-child(2) {
     padding: 0.8125rem 0;
+  }
+}
+
+.normal {
+  @include desktop {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    > div {
+      flex: 1;
+      margin: auto;
+    }
+  }
+}
+.form_top {
+  @include desktop {
+    display: flex;
+  }
+}
+
+.advanced {
+  a {
+    margin: 1rem 0;
+
+    padding: 0 !important;
+    font-weight: 500 !important;
+    font-size: x-small !important;
+  }
+
+  @include desktop {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.show_fares {
+  @include desktop {
+    flex: 1;
+
+    h5 {
+      margin-bottom: 2rem;
+    }
+  }
+}
+.best_fares {
+  @include desktop {
+    flex: 4;
+
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+
+      > * {
+        padding-left: 0;
+        flex: 1;
+      }
+    }
+  }
+}
+
+.advanced_trigger {
+  margin: auto;
+  display: flex;
+  align-items: center;
+
+  font-weight: 600;
+  font-size: small !important;
+
+  span {
+    padding: 0 1rem;
+    font-size: 6px;
   }
 }
