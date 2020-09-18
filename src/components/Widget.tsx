@@ -5,6 +5,7 @@ import styles from "./Widget.module.scss";
 import { motion } from "framer-motion";
 import Tabs from "./common/Tabs";
 import CheckIn from "./CheckIn";
+import MyTrips from "./MyTrips";
 
 const variants = {
   open: { height: 100 + "vh" },
@@ -39,7 +40,7 @@ export default function Widget() {
           "MY TRIPS": () => setTab(2),
         }}
       />
-      {[<Book />, <CheckIn />][tab]}
+      {[<Book />, <CheckIn />, <MyTrips />][tab]}
 
       <div
         className={styles.expand}
