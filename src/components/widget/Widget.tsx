@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Book from "./Book";
 import { MdExpandMore as ExpandMore } from "react-icons/md";
 import styles from "./Widget.module.scss";
 import { motion } from "framer-motion";
-import Tabs from "./common/Tabs";
+import Tabs from "components/common/Tabs";
 import CheckIn from "./CheckIn";
 import MyTrips from "./MyTrips";
+import Book from "./Book";
 
 const variants = {
   open: { height: 100 + "vh" },
@@ -13,7 +13,7 @@ const variants = {
 };
 
 export default function Widget() {
-  const [isExpand, setExpand] = useState(true);
+  const [isExpand, setExpand] = useState(false);
   const [tab, setTab] = useState(0);
 
   useEffect(() => {

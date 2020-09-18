@@ -1,12 +1,11 @@
 import React from "react";
-import Form from "./common/Form";
-import TextField from "./common/TextField";
+import Form from "../common/Form";
+import TextField from "../common/TextField";
 import Confirmation from "./Confirmation";
-import styles from "./MyTrips.module.scss";
 
 export default function MyTrips() {
   return (
-    <div className={styles.my_trips}>
+    <div>
       <Form>
         <Confirmation />
 

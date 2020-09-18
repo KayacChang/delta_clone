@@ -3,11 +3,11 @@ import { range } from "ramda";
 import React, { useState } from "react";
 import Advanced from "./Advanced";
 import styles from "./Book.module.scss";
-import Calendar from "./Calendar";
-import CheckBox from "./common/CheckBox";
-import Select from "./common/Select";
-import Form from "./common/Form";
-import SearchModel from "./Search";
+import Calendar from "components/Calendar";
+import CheckBox from "components/common/CheckBox";
+import Select from "components/common/Select";
+import Form from "components/common/Form";
+import SearchModel from "components/Search";
 
 function Switch() {
   return (

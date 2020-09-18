@@ -1,5 +1,5 @@
 import React from "react";
-import Select from "./common/Select";
+import Select from "components/common/Select";
 
 const confirmationTypes = [
   "Confirmation Number",

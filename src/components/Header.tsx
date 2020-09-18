@@ -1,7 +1,7 @@
 import React from "react";
 import { HiMenu as Menu } from "react-icons/hi";
 import { FaRegBell as Notify } from "react-icons/fa";
-import Widget from "./Widget";
+import Widget from "./widget/Widget";
 import Banner from "./Banner";
 import Shopping from "./Shopping";
 import styles from "./Header.module.scss";

@@ -1,12 +1,11 @@
 import React from "react";
-import styles from "./CheckIn.module.scss";
-import Form from "./common/Form";
-import TextField from "./common/TextField";
+import Form from "components/common/Form";
+import TextField from "components/common/TextField";
 import Confirmation from "./Confirmation";
 
 export default function CheckIn() {
   return (
-    <div className={styles.checkin}>
+    <div>
       <Form>
         <Confirmation />
 
