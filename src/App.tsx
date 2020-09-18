@@ -2,7 +2,7 @@ import React from "react";
 import Header from "components/Header";
 import Landing from "components/Landing";
 import Footer from "components/Footer";
-import FeedBack from "components/FeedBack";
+import FeedBack from "components/common/FeedBack";
 
 function App() {
   return (

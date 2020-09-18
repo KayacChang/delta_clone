@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Advanced.module.scss";
-import CheckBox from "./CheckBox";
-import Select from "./Select";
-import TextField from "./TextField";
+import CheckBox from "./common/CheckBox";
+import Select from "./common/Select";
+import TextField from "./common/TextField";
 
 const economyTypes = [
   "Basic Economy",

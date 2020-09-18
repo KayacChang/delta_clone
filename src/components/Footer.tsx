@@ -7,7 +7,7 @@ import {
 } from "react-icons/ti";
 import { AiOutlineGlobal as Global } from "react-icons/ai";
 import styles from "./Footer.module.scss";
-import TextField from "./TextField";
+import TextField from "./common/TextField";
 
 function Search() {
   return (

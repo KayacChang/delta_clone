@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Advanced from "./Advanced";
 import styles from "./Book.module.scss";
 import Calendar from "./Calendar";
-import CheckBox from "./CheckBox";
-import Select from "./Select";
+import CheckBox from "./common/CheckBox";
+import Select from "./common/Select";
 import { BsArrowRightShort as Arrow } from "react-icons/bs";
 import Search from "./Search";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Control from "./Control";
-import Modal from "./Modal";
+import Control from "./common/Control";
+import Modal from "./common/Modal";
 import styles from "./Search.module.scss";
 
 function Switch() {

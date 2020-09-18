@@ -3,8 +3,8 @@ import moment, { Moment } from "moment";
 import styles from "./Calendar.module.scss";
 import { range } from "ramda";
 import clsx from "clsx";
-import Control from "./Control";
-import Modal from "./Modal";
+import Control from "./common/Control";
+import Modal from "./common/Modal";
 
 type CalendarProps = {
   range: [Moment, Moment];
@@ -69,11 +69,6 @@ function Calendar({ time, onSelect, range }: CalendarProps) {
     </div>
   );
 }
-
-const variants = {
-  hidden: { opacity: 0, zIndex: 0 },
-  visible: { opacity: 1 },
-};
 
 type Props = {
   dateRange: Moment[];
