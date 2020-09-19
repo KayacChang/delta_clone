@@ -9,6 +9,7 @@ import Form from "components/common/Form";
 import SearchModel from "components/Search";
 import TextField from "components/common/TextField";
 import clsx from "clsx";
+import useOpen from "hooks/useOpen";
 
 const economyTypes = [
   "Basic Economy",
@@ -85,7 +86,7 @@ function Location({ from, hint, onClick }: LocationProps) {
 }
 
 function Search() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useOpen();
 
   return (
     <div>

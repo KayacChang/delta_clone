@@ -3,7 +3,7 @@ import { FaRegBell as Notify } from "react-icons/fa";
 import Banner from "./Banner";
 import Shopping from "./Shopping";
 import styles from "./Header.module.scss";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { MdExpandMore as ExpandMore } from "react-icons/md";
 import { motion } from "framer-motion";
 import Tabs from "components/common/Tabs";
@@ -11,6 +11,7 @@ import CheckIn from "components/widget/CheckIn";
 import MyTrips from "components/widget/MyTrips";
 import Book from "components/widget/Book";
 import useIsDesktop from "hooks/useIsDesktop";
+import useOpen from "hooks/useOpen";
 
 const LOGO =
   "//content.delta.com/content/www/us/en.damAssetRender.20180509T1731290530400.html/content/dam/delta_homepage_redesign/Logo/Delta%20Logo.svg";
@@ -60,15 +61,7 @@ function ExpandView({ children }: Props) {
     closed: { height: 28 + "vh" },
   };
 
-  const [isExpand, setExpand] = useState(false);
-
-  useEffect(() => {
-    isExpand && window.scrollTo({ top: 0 });
-
-    Object.assign(window.document.body.style, {
-      overflow: isExpand ? "hidden" : "auto",
-    });
-  }, [isExpand]);
+  const [isExpand, setExpand] = useOpen();
 
   return (
     <motion.div

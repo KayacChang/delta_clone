@@ -1,4 +1,4 @@
-import { split, map, pipe } from "ramda";
+import { split, map, pipe, filter } from "ramda";
 
 export type Airport = {
   id: number; // Unique OpenFlights identifier for this airport.
@@ -77,10 +77,15 @@ function serialize(str: string) {
   return result;
 }
 
+function include({ IATA, city }: Airport) {
+  return Boolean(city) && IATA !== "\\N";
+}
+
 const URL = `https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat`;
 export default function getAirport() {
   return fetch(URL)
     .then((data) => data.text())
     .then(split("\n"))
-    .then(map(pipe(serialize, toAirport)));
+    .then(map(pipe(serialize, toAirport)))
+    .then(filter(include));
 }

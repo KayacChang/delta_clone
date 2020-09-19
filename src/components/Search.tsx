@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Control from "./common/Control";
 import Modal from "./common/Modal";
 import Tabs from "./common/Tabs";
 import TextField from "./common/TextField";
 import styles from "./Search.module.scss";
 import { GoSearch as SearchIcon } from "react-icons/go";
+import { IoIosCloseCircleOutline as Clear } from "react-icons/io";
 import { useAirportState } from "models/airport";
 import { Airport } from "api/airport";
+
+type ItemProps = {
+  IATA: string;
+  city: string;
+};
+function Item({ IATA, city }: ItemProps) {
+  return (
+    <div>
+      <span>{IATA}</span>
+      <span>{city}</span>
+    </div>
+  );
+}
 
 function useAirportSearch() {
   const airports = useAirportState();
@@ -17,9 +31,8 @@ function useAirportSearch() {
       return cache.get(token) || [];
     }
 
-    const regexp = RegExp(token, "gi");
-    const targets = airports.filter(
-      ({ city }) => city && city.search(regexp) !== -1
+    const targets = airports.filter(({ city }) =>
+      city.toLowerCase().startsWith(token)
     );
 
     cache.set(token, targets);
@@ -28,6 +41,36 @@ function useAirportSearch() {
   }
 
   return search;
+}
+
+type SearchFieldProps = {
+  onChange?: (token: string) => void;
+};
+function SearchField({ onChange = () => {} }: SearchFieldProps) {
+  const [token, setToken] = useState("");
+
+  useEffect(() => onChange(token), [token]);
+
+  return (
+    <TextField
+      className={styles.search}
+      name={"origin"}
+      label={"City or Airport"}
+      icon={
+        token.length ? (
+          <Clear
+            size={24}
+            style={{ cursor: "pointer" }}
+            onClick={() => setToken("")}
+          />
+        ) : (
+          <SearchIcon size={24} />
+        )
+      }
+      value={token}
+      onChange={(e) => setToken(e.target.value)}
+    />
+  );
 }
 
 type Props = {
@@ -56,17 +99,17 @@ export default function Search({ open, onClose }: Props) {
         <div>
           <h5>Origin</h5>
 
-          <TextField
-            className={styles.search}
-            name={"origin"}
-            label={"City or Airport"}
-            icon={<SearchIcon size={24} />}
-            onChange={(token) => {
-              if (token.length < 3) return;
-
-              setAirport(search(token));
-            }}
+          <SearchField
+            onChange={(token) =>
+              setAirport(token.length < 3 ? [] : search(token))
+            }
           />
+        </div>
+
+        <div className={styles.list}>
+          {airport.map(({ id, IATA, city }) => (
+            <Item key={id} IATA={IATA} city={city} />
+          ))}
         </div>
       </section>
     </Modal>
