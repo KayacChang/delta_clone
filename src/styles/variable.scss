@@ -20,3 +20,10 @@ $light: #f8f9fa;
 $dark: #11172b;
 $secondary-cta: #0b1f66;
 $white: #fff;
+$border: #282f43;
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}

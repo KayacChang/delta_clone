@@ -1,0 +1,48 @@
+@import "styles/variable";
+
+.checkbox {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0.5rem 0;
+  padding-right: 1rem;
+  font-size: small;
+
+  input {
+    display: none;
+  }
+
+  span {
+    border: 1.5px solid $gray;
+    $size: 1.1rem;
+    height: $size;
+    width: $size;
+
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: none;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  input:checked + span {
+    &:after {
+      display: block;
+    }
+  }
+}
+
+.disable {
+  opacity: 0.3;
+}

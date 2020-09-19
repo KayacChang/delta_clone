@@ -1,0 +1,69 @@
+@import "styles/variable";
+
+.textfield {
+  padding: 1rem 0;
+
+  @include desktop {
+    padding: 0 1rem;
+  }
+
+  display: flex;
+  color: $white;
+  position: relative;
+
+  * {
+    padding: 0;
+  }
+
+  label,
+  input {
+    transition: all 0.5s ease;
+  }
+
+  input {
+    border-bottom: 1px solid $gray !important;
+    margin-right: auto;
+    padding-top: 0.6rem;
+    outline-width: 0;
+    border: 0;
+    background: transparent;
+
+    height: 2.4rem;
+
+    font-size: 1.4rem;
+  }
+
+  input:focus {
+    flex-grow: 1;
+    background: $white;
+  }
+
+  input:focus + label {
+    color: $secondary-cta;
+    transform: translateY(-120%) scale(0.5);
+
+    max-width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  label {
+    transform-origin: left top;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  button {
+    padding: 1rem;
+    color: $white;
+    background: transparent;
+    border: 0;
+  }
+}
+
+.active {
+  color: $secondary-cta !important;
+  transform: translateY(-120%) scale(0.5) !important;
+}

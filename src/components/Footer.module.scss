@@ -1,0 +1,158 @@
+@import "styles/variable";
+
+.footer {
+  background: $dark;
+  color: $gray;
+  padding: 0.5rem 0;
+
+  a,
+  svg {
+    color: $white;
+  }
+
+  > div {
+    max-width: 375px;
+    margin: 1rem auto;
+  }
+
+  hr {
+    display: none;
+  }
+
+  @include desktop {
+    > div {
+      max-width: 50vw;
+    }
+
+    hr {
+      display: block;
+      border-bottom: 0;
+      border-color: rgba($color: #fff, $alpha: 0.3);
+      max-width: 60vw;
+    }
+  }
+}
+
+.sections {
+  display: block;
+
+  @include desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.collapse {
+  > h5 {
+    color: $gray;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bold;
+  }
+
+  > button {
+    padding: 1.2rem 0;
+    padding-right: 1rem;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid $border;
+
+    display: flex;
+    justify-content: space-between;
+
+    text-transform: uppercase;
+    color: $gray;
+    font-size: medium;
+    font-weight: bold;
+  }
+}
+
+.popular {
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+
+  > div {
+    margin: auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.copyright {
+  text-align: center;
+  padding: 16px;
+  font-size: 0.7rem;
+}
+
+.feedback {
+  display: flex;
+  justify-content: center;
+
+  button {
+    background: transparent;
+    border: 0;
+    color: $white;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin: 0.5rem;
+    background: transparent;
+    color: $white;
+    padding: 4px;
+    border-radius: 100%;
+    border: 1px solid $border;
+  }
+}
+
+.localization {
+  display: flex;
+  justify-content: center;
+
+  button {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border: 0;
+    color: $white;
+    background: transparent;
+
+    font-weight: 700;
+
+    * {
+      margin: 0 4px;
+    }
+
+    &:first-child {
+      border-right: 1px solid $border;
+    }
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  > * {
+    margin: 0.5rem 0;
+  }
+}
+
+.link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $white;
+}

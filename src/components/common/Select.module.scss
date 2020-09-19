@@ -1,0 +1,55 @@
+@import "styles/variable";
+
+.select {
+  padding: 1rem 0;
+
+  @include desktop {
+    padding: 0 1rem;
+  }
+
+  button {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid $gray !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: medium;
+
+    svg {
+      color: $red;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background: $white;
+
+    overflow: hidden;
+    border-radius: 8px;
+
+    @include desktop {
+      position: fixed;
+      z-index: 2;
+    }
+
+    button {
+      padding: 1rem;
+      color: $dark;
+      border: 0 !important;
+
+      &:hover {
+        color: $white;
+        background: $indigo;
+      }
+    }
+  }
+}
+
+.active {
+  color: $white !important;
+  background: $blue !important;
+}
