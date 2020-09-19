@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/delta_clone/static/css/main.aea95503.chunk.css",
-    "main.js": "/delta_clone/static/js/main.fdaacb38.chunk.js",
-    "main.js.map": "/delta_clone/static/js/main.fdaacb38.chunk.js.map",
+    "main.js": "/delta_clone/static/js/main.aab55ea1.chunk.js",
+    "main.js.map": "/delta_clone/static/js/main.aab55ea1.chunk.js.map",
     "runtime-main.js": "/delta_clone/static/js/runtime-main.53ed0d2e.js",
     "runtime-main.js.map": "/delta_clone/static/js/runtime-main.53ed0d2e.js.map",
     "static/js/2.b57fd2d6.chunk.js": "/delta_clone/static/js/2.b57fd2d6.chunk.js",
     "static/js/2.b57fd2d6.chunk.js.map": "/delta_clone/static/js/2.b57fd2d6.chunk.js.map",
     "index.html": "/delta_clone/index.html",
-    "precache-manifest.108c775086502e8dab9e7c42e0071dbd.js": "/delta_clone/precache-manifest.108c775086502e8dab9e7c42e0071dbd.js",
+    "precache-manifest.e4cfafef952cc5477dae1c3283392dc2.js": "/delta_clone/precache-manifest.e4cfafef952cc5477dae1c3283392dc2.js",
     "service-worker.js": "/delta_clone/service-worker.js",
     "static/css/main.aea95503.chunk.css.map": "/delta_clone/static/css/main.aea95503.chunk.css.map",
     "static/js/2.b57fd2d6.chunk.js.LICENSE.txt": "/delta_clone/static/js/2.b57fd2d6.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.53ed0d2e.js",
     "static/js/2.b57fd2d6.chunk.js",
     "static/css/main.aea95503.chunk.css",
-    "static/js/main.fdaacb38.chunk.js"
+    "static/js/main.aab55ea1.chunk.js"
   ]
 }
