@@ -23,7 +23,7 @@ $white: #fff;
 $border: #282f43;
 
 @mixin desktop {
-  @media (min-width: 900px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
