@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { ChangeEvent, ReactNode, useCallback, useState } from "react";
+import React, { ChangeEvent, ReactNode } from "react";
 import styles from "./TextField.module.scss";
 
 type Props = {

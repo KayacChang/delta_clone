@@ -50,7 +50,7 @@ type SearchFieldProps = {
 function SearchField({ onChange = () => {} }: SearchFieldProps) {
   const [token, setToken] = useState("");
 
-  useEffect(() => onChange(token), [token]);
+  useEffect(() => onChange(token), [token, onChange]);
 
   return (
     <TextField
