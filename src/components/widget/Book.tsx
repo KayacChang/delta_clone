@@ -10,6 +10,7 @@ import SearchModel from "components/Search";
 import TextField from "components/common/TextField";
 import clsx from "clsx";
 import useOpen from "hooks/useOpen";
+import { Airport } from "api/airport";
 
 const economyTypes = [
   "Basic Economy",
@@ -59,10 +60,13 @@ function Advanced({
   );
 }
 
-function Switch() {
+type SwitchProps = {
+  onClick: () => void;
+};
+function Switch({ onClick }: SwitchProps) {
   return (
     <div>
-      <button className={styles.switch}>
+      <button className={styles.switch} onClick={onClick}>
         <span>{"\u2194"}</span>
       </button>
     </div>
@@ -70,16 +74,16 @@ function Switch() {
 }
 
 type LocationProps = {
-  from: string;
-  hint: string;
+  IATA: string;
+  city: string;
   onClick: () => void;
 };
-function Location({ from, hint, onClick }: LocationProps) {
+function Location({ IATA, city, onClick }: LocationProps) {
   return (
     <div className={styles.location}>
       <button onClick={onClick}>
-        <span>{from}</span>
-        <span>{hint}</span>
+        <span>{IATA}</span>
+        <span>{city}</span>
       </button>
     </div>
   );
@@ -87,24 +91,51 @@ function Location({ from, hint, onClick }: LocationProps) {
 
 function Search() {
   const [open, setOpen] = useOpen();
+  const [search, setSearch] = useState("");
+
+  const [from, setFrom] = useState<Airport>();
+  const [to, setTo] = useState<Airport>();
 
   return (
     <div>
       <div className={styles.top}>
         <Location
-          from={"From"}
-          hint={"Your Origin"}
-          onClick={() => setOpen(true)}
+          IATA={from?.IATA || "From"}
+          city={from?.city || "Your Origin"}
+          onClick={() => {
+            setSearch("Origin");
+            setOpen(true);
+          }}
         />
-        <Switch />
+        <Switch
+          onClick={() => {
+            setFrom(to);
+            setTo(from);
+          }}
+        />
         <Location
-          from={"To"}
-          hint={"Your Destination"}
-          onClick={() => setOpen(true)}
+          IATA={to?.IATA || "To"}
+          city={to?.city || "Your Destination"}
+          onClick={() => {
+            setSearch("Destination");
+            setOpen(true);
+          }}
         />
       </div>
 
-      <SearchModel open={open} onClose={() => setOpen(false)} />
+      <SearchModel
+        title={search}
+        onSelect={(value) => {
+          if (search === "Origin") {
+            setFrom(value);
+          }
+          if (search === "Destination") {
+            setTo(value);
+          }
+        }}
+        open={open}
+        onClose={() => setOpen(false)}
+      />
     </div>
   );
 }

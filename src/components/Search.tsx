@@ -12,10 +12,11 @@ import { Airport } from "api/airport";
 type ItemProps = {
   IATA: string;
   city: string;
+  onClick?: () => void;
 };
-function Item({ IATA, city }: ItemProps) {
+function Item({ IATA, city, onClick = () => {} }: ItemProps) {
   return (
-    <div>
+    <div onClick={onClick}>
       <span>{IATA}</span>
       <span>{city}</span>
     </div>
@@ -74,10 +75,17 @@ function SearchField({ onChange = () => {} }: SearchFieldProps) {
 }
 
 type Props = {
+  title: string;
   open: boolean;
-  onClose: () => void;
+  onSelect?: (value: Airport) => void;
+  onClose?: () => void;
 };
-export default function Search({ open, onClose }: Props) {
+export default function Search({
+  title,
+  open,
+  onClose = () => {},
+  onSelect = () => {},
+}: Props) {
   const search = useAirportSearch();
   const [airport, setAirport] = useState([] as Airport[]);
 
@@ -97,7 +105,7 @@ export default function Search({ open, onClose }: Props) {
         </div>
 
         <div>
-          <h5>Origin</h5>
+          <h5>{title}</h5>
 
           <SearchField
             onChange={(token) =>
@@ -107,9 +115,21 @@ export default function Search({ open, onClose }: Props) {
         </div>
 
         <div className={styles.list}>
-          {airport.map(({ id, IATA, city }) => (
-            <Item key={id} IATA={IATA} city={city} />
-          ))}
+          {airport.map((airport) => {
+            const { id, IATA, city } = airport;
+
+            return (
+              <Item
+                key={id}
+                IATA={IATA}
+                city={city}
+                onClick={() => {
+                  onSelect(airport);
+                  onClose();
+                }}
+              />
+            );
+          })}
         </div>
       </section>
     </Modal>
