@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Control from "./common/Control";
 import Modal from "./common/Modal";
 import Tabs from "./common/Tabs";
@@ -45,12 +45,10 @@ function useAirportSearch() {
 }
 
 type SearchFieldProps = {
-  onChange?: (token: string) => void;
+  onChange?: (value: string) => void;
 };
 function SearchField({ onChange = () => {} }: SearchFieldProps) {
-  const [token, setToken] = useState("");
-
-  useEffect(() => onChange(token), [token]);
+  const [value, setValue] = useState("");
 
   return (
     <TextField
@@ -58,18 +56,24 @@ function SearchField({ onChange = () => {} }: SearchFieldProps) {
       name={"origin"}
       label={"City or Airport"}
       icon={
-        token.length ? (
+        value.length ? (
           <Clear
             size={24}
             style={{ cursor: "pointer" }}
-            onClick={() => setToken("")}
+            onClick={() => {
+              setValue("");
+              onChange("");
+            }}
           />
         ) : (
           <SearchIcon size={24} />
         )
       }
-      value={token}
-      onChange={(e) => setToken(e.target.value)}
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        onChange(e.target.value);
+      }}
     />
   );
 }
