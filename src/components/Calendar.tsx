@@ -5,6 +5,7 @@ import { range } from "ramda";
 import clsx from "clsx";
 import Control from "./common/Control";
 import Modal from "./common/Modal";
+import useOpen from "hooks/useOpen";
 
 type CalendarProps = {
   range: [Moment, Moment];
@@ -33,28 +34,29 @@ function Calendar({ time, onSelect, range }: CalendarProps) {
 
     const between = range.length === 2 && current.isBetween(range[0], range[1]);
 
-    const view =
-      day > 0 ? (
+    const view = day > 0
+      ? (
         <span
           key={day}
           className={clsx(
             (between || select) && styles.between,
             from && styles.edgeL,
-            to && styles.edgeR
+            to && styles.edgeR,
           )}
         >
           <button
             className={clsx(
               unavailable && styles.unavailable,
               today && styles.today,
-              select && styles.select
+              select && styles.select,
             )}
             onClick={() => onSelect(current)}
           >
             {day}
           </button>
         </span>
-      ) : (
+      )
+      : (
         <span key={day}></span>
       );
 
@@ -75,7 +77,7 @@ type Props = {
   setDateRange: (range: Moment[]) => void;
 };
 export default function CalendarSection({ dateRange, setDateRange }: Props) {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useOpen(false);
 
   return (
     <div className={styles.wrapper}>
@@ -85,9 +87,14 @@ export default function CalendarSection({ dateRange, setDateRange }: Props) {
         <span>{!dateRange[1] ? "Return" : dateRange[1].format("MMM DD")}</span>
       </button>
 
-      <Modal className={styles.page} open={isOpen}>
-        <div className={styles.top}>
+      <Modal
+        className={styles.page}
+        open={isOpen}
+        onBlur={() => setOpen(false)}
+      >
+        <div>
           <Control
+            className={styles.top}
             onClear={() => setDateRange([])}
             onClose={() => setOpen(false)}
           />
@@ -120,8 +127,8 @@ export default function CalendarSection({ dateRange, setDateRange }: Props) {
 
                   setDateRange(
                     [...dateRange, date].sort(
-                      (a, b) => a.valueOf() - b.valueOf()
-                    )
+                      (a, b) => a.valueOf() - b.valueOf(),
+                    ),
                   );
                 }}
               />

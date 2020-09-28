@@ -100,7 +100,7 @@ function Location({ IATA, city, onClick }: LocationProps) {
 }
 
 function Search() {
-  const [open, setOpen] = useOpen();
+  const [open, setOpen] = useOpen(false);
   const [search, setSearch] = useState("");
 
   const [from, setFrom] = useState<Airport>();

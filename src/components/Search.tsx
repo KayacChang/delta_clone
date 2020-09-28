@@ -55,8 +55,8 @@ function SearchField({ onChange = () => {} }: SearchFieldProps) {
       className={styles.search}
       name={"origin"}
       label={"City or Airport"}
-      icon={
-        value.length ? (
+      icon={value.length
+        ? (
           <Clear
             size={24}
             style={{ cursor: "pointer" }}
@@ -65,10 +65,10 @@ function SearchField({ onChange = () => {} }: SearchFieldProps) {
               onChange("");
             }}
           />
-        ) : (
-          <SearchIcon size={24} />
         )
-      }
+        : (
+          <SearchIcon size={24} />
+        )}
       value={value}
       onChange={(e) => {
         setValue(e.target.value);
@@ -94,7 +94,11 @@ export default function Search({
   const [airport, setAirport] = useState([] as Airport[]);
 
   return (
-    <Modal open={open} className={styles.page}>
+    <Modal
+      open={open}
+      className={styles.page}
+      onBlur={onClose}
+    >
       <div className={styles.fixed}>
         <Control onClose={onClose} />
       </div>
@@ -113,8 +117,7 @@ export default function Search({
 
           <SearchField
             onChange={(token) =>
-              setAirport(token.length < 3 ? [] : search(token))
-            }
+              setAirport(token.length < 3 ? [] : search(token))}
           />
         </div>
 

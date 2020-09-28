@@ -1,8 +1,6 @@
 @import "styles/variable";
 
 .control {
-  background: $dark;
-
   > div {
     display: flex;
     flex-direction: row-reverse;

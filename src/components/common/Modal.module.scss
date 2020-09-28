@@ -10,6 +10,13 @@
   width: 100%;
   height: 100%;
 
+  @include desktop {
+    top: auto;
+    left: auto;
+    width: 30vw;
+    height: auto;
+  }
+
   background: $white;
   color: $secondary-cta;
 

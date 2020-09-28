@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MdExpandMore as ExpandIcon } from "react-icons/md";
 import styles from "./Select.module.scss";
 import clsx from "clsx";
+import useClickOutSide from "hooks/useClickOutSide";
 
 const variants = {
   open: { height: "auto" },
@@ -20,26 +21,15 @@ export default function Select({
   onSelect = () => {},
 }: Props) {
   const [isOpen, setOpen] = useState(false);
-  const [animEnd, setAnimEnd] = useState(false);
-
-  const whenClickOutside = useCallback((ref: HTMLDivElement) => {
-    if (!ref) return;
-
-    const onMouseDown = (event: Event) =>
-      setOpen(ref.contains(event.target as Node));
-
-    document.addEventListener("mousedown", onMouseDown);
-
-    return () => document.removeEventListener("mousedown", onMouseDown);
-  }, []);
+  const [animEnd, setAnimEnd] = useState(true);
 
   return (
     <div
-      ref={whenClickOutside}
+      ref={useClickOutSide(() => setOpen(false))}
       className={styles.select}
     >
       <button
-        onClick={() => animEnd && setOpen(!isOpen)}
+        onClick={() => animEnd && setOpen(true)}
       >
         {options[current]}
         <ExpandIcon size={32} />

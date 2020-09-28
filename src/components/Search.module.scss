@@ -1,8 +1,18 @@
 @import "styles/variable";
 
 .fixed {
+  background: $dark;
   position: fixed;
   top: 0;
+
+  @include desktop {
+    button {
+      color: $dark !important;
+    }
+
+    background: transparent;
+    position: relative;
+  }
 }
 
 .page {
@@ -19,10 +29,26 @@
     max-width: 90%;
     margin: auto;
   }
+
+  @include desktop {
+    background: #fff;
+
+    section {
+      margin: 2rem 0;
+    }
+
+    section > div {
+      max-width: 80%;
+    }
+  }
 }
 
 .tabs {
   padding-top: 5rem;
+
+  @include desktop {
+    padding-top: 0;
+  }
 
   > div {
     margin: 0;
