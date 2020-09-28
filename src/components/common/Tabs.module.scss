@@ -6,12 +6,31 @@
   align-items: center;
 
   a {
-    margin: 0 16px;
-    padding: 10px 0;
+    display: block;
     font-size: 0.75rem;
+    margin: 1rem;
+  }
+
+  padding-top: 4rem;
+
+  @include desktop {
+    padding: 0 1rem;
+    margin-right: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }
 
 .active {
-  border-bottom: 0.1875rem solid $red;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+
+    top: 2rem;
+    border-bottom: 0.2rem solid $red;
+  }
 }

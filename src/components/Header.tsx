@@ -26,7 +26,11 @@ function Nav({ isDesktop, children }: NavProps) {
   return (
     <nav className={styles.nav}>
       <div>
-        {!isDesktop && <Menu className={styles.menu} size={24} />}
+        {!isDesktop && (
+          <div className={styles.menu}>
+            <Menu size={24} />
+          </div>
+        )}
 
         {isDesktop && (
           <div>
@@ -44,8 +48,8 @@ function Nav({ isDesktop, children }: NavProps) {
           </a>
         </div>
 
-        <div>
-          <Notify className={styles.notify} size={22} />
+        <div className={styles.notify}>
+          <Notify size={22} />
         </div>
       </div>
     </nav>
@@ -105,24 +109,26 @@ export default function Header() {
         )}
       </Nav>
 
-      {isDesktop ? (
-        <div className={styles.widget}>
-          {[<Book />, <CheckIn />, <MyTrips />][tab]}
-        </div>
-      ) : (
-        <ExpandView>
-          <Tabs
-            className={styles.tabs}
-            active={tab}
-            options={{
-              BOOK: () => setTab(0),
-              "CHECK-IN": () => setTab(1),
-              "MY TRIPS": () => setTab(2),
-            }}
-          />
-          {[<Book />, <CheckIn />, <MyTrips />][tab]}
-        </ExpandView>
-      )}
+      {isDesktop
+        ? (
+          <div className={styles.widget}>
+            {[<Book />, <CheckIn />, <MyTrips />][tab]}
+          </div>
+        )
+        : (
+          <ExpandView>
+            <Tabs
+              className={styles.tabs}
+              active={tab}
+              options={{
+                BOOK: () => setTab(0),
+                "CHECK-IN": () => setTab(1),
+                "MY TRIPS": () => setTab(2),
+              }}
+            />
+            {[<Book />, <CheckIn />, <MyTrips />][tab]}
+          </ExpandView>
+        )}
 
       <Banner />
       <Shopping />
