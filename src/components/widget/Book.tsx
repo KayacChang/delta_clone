@@ -12,6 +12,7 @@ import clsx from "clsx";
 import useOpen from "hooks/useOpen";
 import { Airport } from "api/airport";
 import useIsDesktop from "hooks/useIsDesktop";
+import { VscArrowBoth as SwitchIcon } from "react-icons/vsc";
 
 const economyTypes = [
   "Basic Economy",
@@ -78,9 +79,9 @@ type SwitchProps = {
 };
 function Switch({ onClick }: SwitchProps) {
   return (
-    <div>
-      <button className={styles.switch} onClick={onClick}>
-        <span>{"\u2194"}</span>
+    <div className={styles.switch}>
+      <button onClick={onClick}>
+        <SwitchIcon size={48} />
       </button>
     </div>
   );

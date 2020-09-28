@@ -31,19 +31,9 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+
+    max-width: 1000px;
     min-height: 3rem;
-  }
-
-  @include desktop("M") {
-    > div {
-      max-width: 900px;
-    }
-  }
-
-  @include desktop("L") {
-    > div {
-      max-width: 1200px;
-    }
   }
 }
 

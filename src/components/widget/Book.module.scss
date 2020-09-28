@@ -32,6 +32,7 @@
   }
 
   @include desktop {
+    margin-left: 1rem;
     display: flex;
     flex-wrap: wrap;
 
@@ -42,16 +43,24 @@
 }
 
 .switch {
-  margin: auto 16px;
-  padding: 0;
+  display: flex;
+  justify-content: center;
 
-  span {
+  button {
+    margin: auto 16px;
+    padding: 0;
+  }
+
+  svg {
     color: $red;
-    font-size: 2.8rem;
   }
 }
 
 .location {
+  display: flex;
+  justify-content: center;
+  width: 7rem;
+
   button {
     display: flex;
     flex-direction: column;
@@ -62,6 +71,7 @@
     font-size: 3rem;
   }
   span:nth-child(2) {
+    font-size: x-small;
     padding: 0.8125rem 0;
   }
 }
