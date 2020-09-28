@@ -21,5 +21,5 @@ function useWindowSize() {
 export default function useIsDesktop() {
   const [width] = useWindowSize();
 
-  return width > 1200;
+  return width > 1000;
 }

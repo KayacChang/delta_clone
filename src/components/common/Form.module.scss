@@ -22,7 +22,11 @@
     align-items: stretch;
 
     margin: auto;
-    width: 60vw;
+    width: 90%;
+  }
+
+  @include desktop("L") {
+    width: 70%;
   }
 }
 

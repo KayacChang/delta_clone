@@ -22,8 +22,14 @@ $secondary-cta: #0b1f66;
 $white: #fff;
 $border: #282f43;
 
-@mixin desktop {
-  @media (min-width: 1200px) {
-    @content;
+@mixin desktop($size: "M") {
+  @if $size == "L" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: 1000px) {
+      @content;
+    }
   }
 }

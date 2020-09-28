@@ -20,6 +20,7 @@ export default function Select({
   onSelect = () => {},
 }: Props) {
   const [isOpen, setOpen] = useState(false);
+  const [animEnd, setAnimEnd] = useState(false);
 
   const whenClickOutside = useCallback((ref: HTMLDivElement) => {
     if (!ref) return;
@@ -37,7 +38,9 @@ export default function Select({
       ref={whenClickOutside}
       className={styles.select}
     >
-      <button onClick={() => setOpen(true)}>
+      <button
+        onClick={() => animEnd && setOpen(!isOpen)}
+      >
         {options[current]}
         <ExpandIcon size={32} />
       </button>
@@ -47,6 +50,8 @@ export default function Select({
         initial={isOpen ? "open" : "closed"}
         animate={isOpen ? "open" : "closed"}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        onAnimationStart={() => setAnimEnd(false)}
+        onAnimationComplete={() => setAnimEnd(true)}
       >
         {options.map((value, idx) => (
           <li key={String(idx)}>
