@@ -22,16 +22,19 @@ const economyTypes = [
   "Delta One®",
 ];
 type Props = {
+  nearby: boolean;
+  setNearby: (flag: boolean) => void;
   isOpen: boolean;
   shopWithMiles?: boolean;
   myDatesAreFlexible?: boolean;
 };
 function Advanced({
+  nearby,
+  setNearby,
   shopWithMiles = false,
   myDatesAreFlexible = false,
   isOpen,
 }: Props) {
-  const [nearby, setNearby] = useState(false);
   const [economy, setEconomy] = useState(0);
 
   return (
@@ -162,6 +165,8 @@ export default function Book() {
   const [passenger, setPassenger] = useState(0);
   const [dateRange, setDateRange] = useState([] as Moment[]);
   const [checks, setChecks] = useState(checkList);
+  const [nearby, setNearby] = useState(false);
+
   const [isOpen, setOpen] = useState(false);
   const isDesktop = useIsDesktop();
 
@@ -196,31 +201,37 @@ export default function Book() {
           )}
 
           <div className={styles.checkboxs}>
-            {Object.entries(checks).map(([name, checked]) => (
-              <CheckBox
-                key={name}
-                name={name}
-                checked={checked}
-                disable={name !== "Shop with Miles" &&
-                  checks["Shop with Miles"]}
-                onChange={(checked) => {
-                  if (name === "Shop with Miles") {
-                    const checks = checked
-                      ? {
-                        "Shop with Miles": true,
-                        "Refundable Fares": false,
-                        "My dates are flexible": true,
-                      }
-                      : checkList;
-
-                    setChecks(checks);
-                    return;
+            <CheckBox
+              name={"Shop with Miles"}
+              checked={checks["Shop with Miles"]}
+              onChange={(checked) => {
+                const checks = checked
+                  ? {
+                    "Shop with Miles": true,
+                    "Refundable Fares": false,
+                    "My dates are flexible": true,
                   }
+                  : checkList;
 
-                  setChecks({ ...checks, [name]: checked });
-                }}
-              />
-            ))}
+                setChecks(checks);
+              }}
+            />
+
+            <CheckBox
+              name={"Refundable Fares"}
+              disable={checks["Shop with Miles"]}
+              checked={checks["Refundable Fares"]}
+              onChange={(checked) =>
+                setChecks({ ...checks, "Refundable Fares": checked })}
+            />
+
+            <CheckBox
+              name={"My dates are flexible"}
+              disable={nearby || checks["Shop with Miles"]}
+              checked={!nearby && checks["My dates are flexible"]}
+              onChange={(checked) =>
+                setChecks({ ...checks, "My dates are flexible": checked })}
+            />
           </div>
 
           <button
@@ -232,6 +243,8 @@ export default function Book() {
         </div>
 
         <Advanced
+          nearby={nearby}
+          setNearby={setNearby}
           isOpen={isOpen}
           shopWithMiles={checks["Shop with Miles"]}
           myDatesAreFlexible={checks["My dates are flexible"]}
