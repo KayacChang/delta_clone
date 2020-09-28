@@ -29,7 +29,7 @@ export default function Select({
       className={styles.select}
     >
       <button
-        onClick={() => animEnd && setOpen(true)}
+        onClick={() => animEnd && setOpen(!isOpen)}
       >
         {options[current]}
         <ExpandIcon size={32} />
