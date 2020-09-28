@@ -1,8 +1,6 @@
 @import "styles/variable";
 
 .landing {
-  padding: 0 4rem;
-
   background: $white;
 
   h1,
@@ -19,7 +17,7 @@
   }
 
   section {
-    padding: 2rem 0;
+    padding: 1rem;
     margin: auto;
 
     @include desktop {
@@ -34,6 +32,7 @@
 }
 
 .top {
+  // padding: 1rem;
   display: flex;
   flex-direction: column;
   text-align: center;
