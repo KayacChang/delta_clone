@@ -12,8 +12,11 @@ import { motion } from "framer-motion";
 import useIsDesktop from "hooks/useIsDesktop";
 
 function Search() {
+  const [value, setValue] = useState("");
   return (
     <TextField
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
       name="search"
       label="Search for a topic..."
       icon={<SearchIcon size={24} />}

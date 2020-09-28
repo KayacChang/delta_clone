@@ -34,6 +34,7 @@
   }
 
   input:focus {
+    color: $dark;
     flex-grow: 1;
     background: $white;
   }
@@ -49,6 +50,7 @@
   }
 
   label {
+    color: $white;
     transform-origin: left top;
     position: absolute;
     top: 50%;
@@ -64,6 +66,5 @@
 }
 
 .active {
-  color: $secondary-cta !important;
   transform: translateY(-120%) scale(0.5) !important;
 }
