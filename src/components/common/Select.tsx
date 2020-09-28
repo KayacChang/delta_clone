@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { MdExpandMore as ExpandIcon } from "react-icons/md";
 import styles from "./Select.module.scss";
@@ -21,13 +21,23 @@ export default function Select({
 }: Props) {
   const [isOpen, setOpen] = useState(false);
 
+  const whenClickOutside = useCallback((ref: HTMLDivElement) => {
+    if (!ref) return;
+
+    const onMouseDown = (event: Event) =>
+      setOpen(ref.contains(event.target as Node));
+
+    document.addEventListener("mousedown", onMouseDown);
+
+    return () => document.removeEventListener("mousedown", onMouseDown);
+  }, []);
+
   return (
     <div
+      ref={whenClickOutside}
       className={styles.select}
-      onBlur={() => setOpen(false)}
-      onClick={() => setOpen(!isOpen)}
     >
-      <button>
+      <button onClick={() => setOpen(true)}>
         {options[current]}
         <ExpandIcon size={32} />
       </button>
@@ -42,7 +52,10 @@ export default function Select({
           <li key={String(idx)}>
             <button
               className={clsx(current === idx && styles.active)}
-              onClick={() => onSelect(idx)}
+              onClick={() => {
+                onSelect(idx);
+                setOpen(false);
+              }}
             >
               {value}
             </button>

@@ -30,6 +30,9 @@ function Advanced({
   myDatesAreFlexible = false,
   isOpen,
 }: Props) {
+  const [nearby, setNearby] = useState(false);
+  const [economy, setEconomy] = useState(0);
+
   return (
     <div
       className={styles.advanced}
@@ -40,6 +43,8 @@ function Advanced({
           <h5>SHOW FARES</h5>
 
           <CheckBox
+            checked={nearby}
+            onChange={setNearby}
             name={"Include Nearby Airports"}
             label={"Include Nearby Airports"}
           />
@@ -49,7 +54,11 @@ function Advanced({
       <div className={styles.best_fares}>
         <h5>Best Fares For</h5>
         <div>
-          <Select options={economyTypes} />
+          <Select
+            options={economyTypes}
+            current={economy}
+            onSelect={setEconomy}
+          />
 
           {!shopWithMiles && (
             <TextField name="meeting" label="Meeting Code (Optional)" />
@@ -184,17 +193,16 @@ export default function Book() {
                 key={name}
                 name={name}
                 checked={checked}
-                disable={
-                  name !== "Shop with Miles" && checks["Shop with Miles"]
-                }
+                disable={name !== "Shop with Miles" &&
+                  checks["Shop with Miles"]}
                 onChange={(checked) => {
                   if (name === "Shop with Miles") {
                     const checks = checked
                       ? {
-                          "Shop with Miles": true,
-                          "Refundable Fares": false,
-                          "My dates are flexible": true,
-                        }
+                        "Shop with Miles": true,
+                        "Refundable Fares": false,
+                        "My dates are flexible": true,
+                      }
                       : checkList;
 
                     setChecks(checks);
