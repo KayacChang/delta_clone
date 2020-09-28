@@ -34,11 +34,17 @@
 }
 
 .top {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 
   h1 {
     font-weight: 400;
     font-size: 3rem;
+  }
+
+  > * {
+    margin: 0.5rem 0;
   }
 }
 
