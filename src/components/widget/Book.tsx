@@ -11,6 +11,7 @@ import TextField from "components/common/TextField";
 import clsx from "clsx";
 import useOpen from "hooks/useOpen";
 import { Airport } from "api/airport";
+import useIsDesktop from "hooks/useIsDesktop";
 
 const economyTypes = [
   "Basic Economy",
@@ -162,6 +163,7 @@ export default function Book() {
   const [dateRange, setDateRange] = useState([] as Moment[]);
   const [checks, setChecks] = useState(checkList);
   const [isOpen, setOpen] = useState(false);
+  const isDesktop = useIsDesktop();
 
   return (
     <div className={styles.book}>
@@ -187,6 +189,12 @@ export default function Book() {
         </div>
 
         <div className={styles.bottom}>
+          {isDesktop && (
+            <span>
+              SEARCH OPTIONS
+            </span>
+          )}
+
           <div className={styles.checkboxs}>
             {Object.entries(checks).map(([name, checked]) => (
               <CheckBox

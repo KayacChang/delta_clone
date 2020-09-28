@@ -20,12 +20,23 @@
   margin: 0 1rem;
 }
 .bottom {
+  > span {
+    margin: auto 0;
+    margin-right: 2rem;
+    font-size: small;
+    color: $gray;
+  }
+
+  > button {
+    margin-right: 0;
+  }
+
   @include desktop {
     display: flex;
     flex-wrap: wrap;
 
-    > * {
-      flex: 1;
+    > div {
+      width: 50%;
     }
   }
 }
